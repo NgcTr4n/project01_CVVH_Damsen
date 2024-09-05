@@ -1,0 +1,340 @@
+.gioithieu_container {
+  /* display: flex;
+    align-items: center;
+    justify-content: center; */
+  padding: 72px;
+  background-color: #ffffff;
+}
+.gioithieu_banner p {
+  color: var(--gray-gray-500, #666);
+  /* Nunito/16px/16px: Regular */
+  font-family: Nunito;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gioithieu_chitiet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gioithieu_chitiet h1 {
+  padding: 40px 0;
+  color: var(--heading-text-color, #259e58);
+  /* Bangers/96px */
+  font-family: "Bangers", sans-serif;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.gioithieu_chitiet_frame {
+  margin-top: 84px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  /* justify-content: center; */
+  height: auto;
+}
+.chitiet_frame_green {
+  position: relative;
+}
+.chitiet_frame_green_content img {
+  position: absolute;
+  left: 0;
+}
+.chitiet_frame_green_content {
+  position: absolute;
+  background-color: #4caf50;
+  width: 992px;
+  height: 532px;
+  padding: 40px;
+  color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1;
+}
+.frame_green_text {
+  width: 659px;
+  height: auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  z-index: 100;
+}
+
+.chitiet_frame_green_content h2 {
+  color: var(--White, #fff);
+
+  /* Nunito/36px bold */
+  font-family: "Nunito", sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 120%; /* 43.2px */
+  margin-bottom: 20px;
+}
+
+.chitiet_frame_green_content p {
+  margin-bottom: 20px;
+  color: var(--White, #fff);
+  text-align: center;
+  /* Nunito/18px/18px: Medium */
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 27px */
+}
+
+.chitiet_frame_green_button {
+  display: flex;
+  padding: 10px 12px 10px 16px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--White, #fff);
+  color: var(--green-green-500, #259e58);
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 27px */
+  border: none;
+}
+
+.chitiet_frame_green_button:hover {
+  background-color: #e3e1e1;
+}
+
+.chitiet_frame_green_img {
+  flex: 1;
+  margin-top: 30px;
+  margin-left: 51rem;
+  position: relative;
+  z-index: 2;
+}
+
+.chitiet_frame_green_img img {
+  /* width: 100%; */
+  margin-top: 5rem;
+
+  height: auto;
+  /* border-radius: 10px; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chitiet_frame_pink {
+  /* margin-top: 84px; */
+  position: relative;
+}
+.chitiet_frame_pink_content img {
+  position: absolute;
+  /* left: 0; */
+}
+.chitiet_frame_pink_content {
+  position: absolute;
+  background-color: #ec008c;
+  width: 992px;
+  height: 532px;
+  padding: 40px;
+  color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1;
+}
+.frame_pink_text {
+  width: 659px;
+  margin-left: 15rem;
+  height: auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  z-index: 100;
+}
+
+.chitiet_frame_pink_content h2 {
+  color: var(--White, #fff);
+
+  /* Nunito/36px bold */
+  font-family: "Nunito", sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 120%; /* 43.2px */
+  margin-bottom: 20px;
+}
+
+.chitiet_frame_pink_content p {
+  margin-bottom: 20px;
+  color: var(--White, #fff);
+  text-align: center;
+  /* Nunito/18px/18px: Medium */
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 27px */
+}
+
+.chitiet_frame_pink_button {
+  display: flex;
+  padding: 10px 12px 10px 16px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--White, #fff);
+  color: var(--pink-pink-500, #ec008c);
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 27px */
+  border: none;
+}
+
+.chitiet_frame_pink_button:hover {
+  background-color: #e3e1e1;
+}
+
+.chitiet_frame_pink_img {
+  /* flex: 1; */
+  margin-top: 30px;
+  position: relative;
+  left: 15rem;
+  z-index: 2;
+}
+
+.chitiet_frame_pink_img img {
+  /* width: 100%; */
+  margin-top: 4rem;
+  margin-left: 5rem;
+
+  height: auto;
+  /* border-radius: 10px; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.gioithieu_hoatdong {
+  width: 100%;
+  height: auto;
+  padding: 35px;
+}
+.gioithieu_hoatdong h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--pink-pink-500, #ec008c);
+  /* Bangers/50px */
+  font-family: "Bangers", sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.thoithieu_hoatdong_box {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.thoithieu_hoatdong_box_1 {
+  display: flex;
+  width: 436px;
+  height: 316px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: #fff;
+
+  box-shadow: 0px 2px 22px 0px rgba(0, 0, 0, 0.16);
+  gap: 24px;
+}
+
+.thoithieu_hoatdong_box_1 h3 {
+  color: var(--menu-bg-color, #259e58);
+  /* 36px semibold */
+  font-family: "Nunito", sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 43.2px */
+}
+.thoithieu_hoatdong_box_1 p {
+  color: #726e6e;
+
+  text-align: center;
+  /* Nunito/23px/23px: Regular */
+  font-family: "Nunito", sans-serif;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 34.5px */
+}
+.thoithieu_hoatdong_box_1 p b {
+  color: var(--gray-gray-500, #666);
+  /* Nunito/23px/23px: SemiBold */
+  font-family: "Nunito", sans-serif;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+}
+.gioithieu_giave h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--pink-pink-500, #ec008c);
+  /* Bangers/50px */
+  font-family: "Bangers", sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.gioithieu_giave_luuy h5{
+    color: var(--pink-pink-500, #EC008C);
+    /* Nunito/23px/23px: Bold */
+    text-transform: uppercase;
+    font-family: "Nunito", sans-serif;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+.gioithieu_giave_luuy ul{
+    margin-left: 20px;
+}
+.gioithieu_giave_luuy li{
+    color: var(--gray-gray-400, #858585);
+/* Nunito/18px/18px: Regular */
+font-family: Nunito;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%;
+}
+.gioithieu_giave_luuy li b{
+    color: var(--gray-gray-500, #666);
+    /* Nunito/18px/18px: SemiBold */
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 27px */
+}

@@ -1,0 +1,70 @@
+.ticket-card {
+  width: 724px;
+  height: 370px;
+  display: flex;
+  border-radius: 25px 0px;
+  overflow: hidden;
+  padding: 20px;
+  margin: 10px;
+  position: relative;
+}
+
+.ticket-card-content {
+  display: flex;
+  align-items: center;
+}
+
+.ticket-card-image {
+  margin-right: 20px;
+}
+
+.ticket-card-info {
+  flex-grow: 1;
+}
+
+.ticket-card-info h3 {
+  color: var(--White, #fff);
+  font-family: Bangers;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.ticket-card-info h6 {
+  color: var(--White, #fff);
+  font-family: Nunito;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 48px */
+}
+.ticket-card-info p {
+  color: var(--White, #fff);
+  /* Nunito/16px/16px: Regular */
+  font-family: Nunito;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+}
+
+.ticket-card-info button {
+  width: 160px;
+  display: inline-flex;
+  border: none;
+  margin-top: 70px;
+  padding: 10px 12px 10px 16px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  color: var(--green-green-500, #259e58);
+  text-align: center;
+  /* Nunito/18px/18px: Bold */
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 150%; /* 27px */
+  background: var(--White, #fff);
+}
