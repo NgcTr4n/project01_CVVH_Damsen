@@ -1,0 +1,60 @@
+.baomat_mochoatdong ol li ul {
+  list-style: disc;
+  margin-left: 20px;
+}
+
+.baomat_mochoatdong ol li ul li,
+.baomat_mochoatdong ol li span {
+  color: var(--gray-gray-500, #666);
+  /* Nunito/18px/18px: Regular */
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+}
+.tapthe_sukien {
+  padding: 40px 0 24px 0;
+}
+.tapthe_sukien h5 {
+  color: var(--pink-pink-500, #ec008c);
+  text-align: left;
+  /* Bangers/50px */
+  font-family: Bangers;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.tapthe_sukien ul {
+    margin-top: 14px;
+  margin-left: 20px;
+}
+.tapthe_sukien p {
+  color: var(--gray-gray-500, #666);
+  /* Nunito/18px/18px: Regular */
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+}
+
+.tapthe_sukien ul li{
+    color: var(--gray-gray-500, #666);
+    /* Nunito/18px/18px: Regular */
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
+}
+.tapthe_sukien ul li b{
+    color: var(--gray-gray-500, #666);
+    /* Nunito/18px/18px: SemiBold */
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+}

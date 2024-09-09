@@ -1,0 +1,40 @@
+.lichsu_content{
+    width: 973px;
+
+}
+.lichsu_content p {
+  color: var(--gray-gray-500, #666);
+  /* Nunito/18px/18px: Regular */
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+}
+.lichsu_mochoatdong {
+  padding-top: 40px;
+}
+.lichsu_mochoatdong h5 {
+  color: var(--pink-pink-500, #ec008c);
+  font-family: "Bangers", sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  gap: 24px;
+}
+.lichsu_mochoatdong ul{
+    width: 1001px;
+    margin-left: 20px;
+    padding: 24px 0 20px;
+}
+.lichsu_mochoatdong ul li{
+    color: var(--gray-gray-400, #858585);
+    /* Nunito/18px/18px: Regular */
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
