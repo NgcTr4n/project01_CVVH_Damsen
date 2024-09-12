@@ -11,9 +11,14 @@ import Tapthe from "./pages/vekhachle/tapthe"
 import Theduc from "./pages/vekhachle/theduc"
 import Dichvu from "./pages/vekhachle/dichvu"
 import Congvien from "./pages/vekhachle/congvien"
-
+import Watershow_1 from "./pages/watershow/watershow_1"
+import Menu from "./components/menu/menu_sidebar"
 
 export const router = createBrowserRouter([
+    {
+        path: "/menu",
+        element: <Menu />,
+    },
     {
         path: "/",
         element: <Trangchu/>,
@@ -33,6 +38,10 @@ export const router = createBrowserRouter([
     {
         path: "/watershow",
         element: <Watershow/>,
+    },
+    {
+        path: "/watershow/watershow_1",
+        element: <Watershow_1/>,
     },
     {
         path:"/gioithieu/lichsu",

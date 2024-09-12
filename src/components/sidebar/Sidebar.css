@@ -23,6 +23,9 @@ body {
   height: 100vh;
 }
 
+.sidebar-open {
+  width: 250px;
+}
 @media (min-width: 1024px) {
   .sidebar {
     width: 257px;

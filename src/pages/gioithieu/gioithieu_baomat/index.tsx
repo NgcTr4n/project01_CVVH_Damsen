@@ -50,7 +50,7 @@ const Baomat = () => {
               Một chuỗi ẩn danh được tạo từ địa chỉ email của bạn (còn được gọi
               là hash) có thể được cung cấp cho dịch vụ Gravatar để xem bạn có
               đang sử dụng nó hay không. Chính sách bảo mật của dịch vụ Gravatar
-              có tại đây: <span>https://automattic.com/privacy/</span>. Sau khi
+              có tại đây: <a>https://automattic.com/privacy/</a>. Sau khi
               chấp nhận bình luận của bạn, ảnh tiểu sử của bạn được hiển thị
               công khai trong ngữ cảnh bình luận của bạn.
              </p>

@@ -1,0 +1,10 @@
+.baomat_mochoatdong p a {
+  color: var(--blue, #005aab);
+  /* Nunito/18px/18px: Regular */
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  text-decoration-line: underline;
+}

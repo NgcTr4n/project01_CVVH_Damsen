@@ -1,0 +1,45 @@
+.dichvu_canhbao {
+  display: flex;
+  align-items: center;
+  padding-bottom: 24px;
+}
+.dichvu_canhbao svg{
+    margin-right: 4px;
+}
+.dichvu_canhbao span {
+    display: flex;
+    align-items: center;
+  color: #dfa100;
+
+  /* Nunito/18px/18px: SemiBold */
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 27px */
+}
+.dichvu_bang {
+  padding-top: 16px;
+}
+
+.dichvu_bang th {
+  text-align: left;
+  height: 20px;
+  width: 220px;
+  color: var(--gray-gray-500, #666);
+  /* Nunito/20px/20px: SemiBold */
+  font-family: Nunito;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 30px */
+}
+.dichvu_bang td {
+  color: var(--gray-gray-500, #666);
+  /* Nunito/18px/18px: Regular */
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+}

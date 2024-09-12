@@ -69,6 +69,8 @@ const navLinks: NavLink[] = [
 ];
 
 const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const { pathname } = useLocation();
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -87,7 +89,10 @@ const Sidebar = () => {
       <div className="sidebar-content">
         {window.innerWidth >= 600 && (
           <div className="sidebar-title">
-            <img src={icon} alt="Icon" />
+            <a href="/menu">
+              {" "}
+              <img src={icon} alt="Icon" />
+            </a>
           </div>
         )}
         <div className="nav-links">
@@ -105,33 +110,36 @@ const Sidebar = () => {
                 className={`nav-link ${isActive(item) ? "active" : ""}`}
                 onClick={() => handleMenuClick(item.name)}
               >
-                <div className={`nav-item ${isActive(item) ? "active-item" : ""}`}>
+                <div
+                  className={`nav-item ${isActive(item) ? "active-item" : ""}`}
+                >
                   {window.innerWidth >= 960 && <p>{item.name}</p>}
                   {item.icon && <span className="nav-icon">{item.icon}</span>}
                 </div>
               </Link>
-              {item.subMenu && (hoveredMenu === item.name || activeMenu === item.name)  && (
-                <div className="sub-menu">
-                  {item.subMenu.map((subItem) => (
-                    <Link
-                      key={subItem.name}
-                      to={subItem.link}
-                      className={`sub-menu-item ${
-                        pathname === subItem.link ? "active" : ""
-                      }`}
-                      onClick={() => setActiveMenu(null)} 
-                    >
-                      {subItem.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              {item.subMenu &&
+                (hoveredMenu === item.name || activeMenu === item.name) && (
+                  <div className="sub-menu">
+                    {item.subMenu.map((subItem) => (
+                      <Link
+                        key={subItem.name}
+                        to={subItem.link}
+                        className={`sub-menu-item ${
+                          pathname === subItem.link ? "active" : ""
+                        }`}
+                        onClick={() => setActiveMenu(null)}
+                      >
+                        {subItem.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
             </div>
           ))}
         </div>
       </div>
       <div className="sidebar_bottom">
-        <Link to="/" className="logo" >
+        <Link to="/" className="logo">
           <img src={logo} alt="Logo" />
         </Link>
         <div className="line"></div>
