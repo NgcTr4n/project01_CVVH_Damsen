@@ -32,3 +32,52 @@
 
   cursor: pointer;
 }
+.label-description {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #333;
+  padding: 10px;
+  z-index: 10;
+  width: 200px;
+  text-align: left;
+  font-size: 12px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.description-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.description-content p{
+  color: var(--gray-gray-500, #666);
+/* Nunito/16px/16px: Regular */
+font-family: Nunito;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 24px */
+}
+.description-content strong{
+  color: var(--gray-gray-500, #666);
+/* Nunito/16px/16px: Regular */
+font-family: Nunito;
+font-size: 16px;
+font-style: normal;
+font-weight: 900;
+line-height: 150%; /* 24px */
+}
+.content_icon_arrow svg{
+  width: 24px;
+  height: 24px;
+  background: var(--menu-bg-color, #259E58);
+  border-radius: 50%;
+  stroke: #fff;
+
+}
+.content_icon_arrow svg:hover{
+  stroke: #259E58;
+  background: #fff;
+  border: 1px solid #259E58;
+}
