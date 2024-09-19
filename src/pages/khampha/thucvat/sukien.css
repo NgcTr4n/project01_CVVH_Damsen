@@ -1,0 +1,90 @@
+.lotus-card {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.lotus-image {
+  position: relative;
+}
+.lotus-content {
+  padding: 40px;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+}
+.lotus-content h1 {
+  color: #fff;
+
+  font-family: Quicksand;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.lotus_line {
+margin-top: 2px;
+margin-bottom: 21px;
+  width: 89px;
+  height: 2px;
+  background: #fff;
+}
+.lotus-content p {
+  width: 629px;
+  color: #fff;
+
+  /* Nunito/18px/18px: Regular */
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+}
+.lotus-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.lotus-type {
+  color: var(--White, #fff);
+  /* Nunito/16px/16px: SemiBold */
+  font-family: Nunito;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 24px */
+  display: flex;
+  align-items: center;
+}
+
+.lotus-date {
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  color: var(--White, #fff);
+  /* Nunito/16px/16px: Regular */
+  font-family: Nunito;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+}
+.lotus-type svg,
+.lotus-date svg {
+  margin-right: 4px;
+}
+.lotus-button {
+  display: inline-flex;
+  padding: 10px 16px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--green-green-500, #259e58);
+}
+
+.lotus-content,
+.lotus-footer {
+  padding-top: 24px;
+}
+.lotus-footer {
+  padding-bottom: 24px;
+}

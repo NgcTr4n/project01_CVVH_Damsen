@@ -5,7 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
+import { Provider } from 'react-redux';
+import { store } from './app/store';
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -18,9 +19,9 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+ <Provider store={store}>
+      <App />
+ </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

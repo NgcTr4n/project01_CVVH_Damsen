@@ -1,0 +1,23 @@
+.section_khiduoidai{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.info-section p{
+    padding: 24px;
+    width: 100%;
+}
+.info-section h2{
+    padding-left: 24px;
+    color: var(--pink-pink-500, #EC008C);
+/* Bangers/50px */
+font-family: Bangers;
+font-size: 50px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.image-with-caption p{
+    width: 100%;
+    text-align: center;
+}

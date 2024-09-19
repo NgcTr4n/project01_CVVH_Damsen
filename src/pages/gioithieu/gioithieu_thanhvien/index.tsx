@@ -9,18 +9,19 @@ import logo_cf from "../../../assets/logo_cf.png";
 import "./thanhvien.css";
 import CardFooter from "./CardFooter";
 import CarouselComponent from "./CarouselComponent";
-import slide_thanhvien_01 from "../../../assets/slide_thanhvien_01.png";
-import slide_thanhvien_02 from "../../../assets/slide_thanhvien_02.png";
+import CarouselComponent_01 from "./CarouselComponent_01";
+// import slide_thanhvien_01 from "../../../assets/slide_thanhvien_01.png";
+// import slide_thanhvien_02 from "../../../assets/slide_thanhvien_02.png";
 
-const imageUrls = [
-  slide_thanhvien_01,
-  slide_thanhvien_02,
-  slide_thanhvien_01,
-  slide_thanhvien_02,
-  slide_thanhvien_01,
-];
-const caption =
-  'Vua đầu bếp "Yan Can Cook" từng đến giao lưu với đội ngũ bếp của nhà hàng Thủy Tạ Đầm Sen';
+// const imageUrls = [
+//   slide_thanhvien_01,
+//   slide_thanhvien_02,
+//   slide_thanhvien_01,
+//   slide_thanhvien_02,
+//   slide_thanhvien_01,
+// ];
+// const caption =
+//   'Vua đầu bếp "Yan Can Cook" từng đến giao lưu với đội ngũ bếp của nhà hàng Thủy Tạ Đầm Sen';
 
 const Thanhvien = () => {
   return (
@@ -83,7 +84,7 @@ const Thanhvien = () => {
           </div>
         </div>
         <div className="slider_thanhvien">
-          <CarouselComponent images={imageUrls} caption={caption} />
+          <CarouselComponent />
         </div>
         <div className="baomat_mochoatdong">
           <div className="thanhvien_content">
@@ -129,6 +130,9 @@ const Thanhvien = () => {
               </svg>
             </span>
           </div>
+          <div className="slider_thanhvien">
+          <CarouselComponent_01 />
+        </div>
         </div>
         <div className="sukien_list_card_footer">
           <div className="sukien-header">

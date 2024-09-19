@@ -19,7 +19,7 @@
   }
    */
 .card-image {
-  width: 350px;
+  width: 365px;
   height: 250px;
   object-fit: cover;
 }
@@ -38,11 +38,13 @@
   line-height: 150%; /* 30px */
 }
 
-.card-content p {
-  overflow: hidden;
+.card-content h6{
+    /* white-space: normal;
+    overflow: visible;
+    text-overflow: unset;  */
+
   color: var(--gray-gray-500, #666);
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
   /* Nunito/16px/16px: Regular */
   font-family: Nunito;
   font-size: 16px;

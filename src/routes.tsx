@@ -12,13 +12,16 @@ import Theduc from "./pages/vekhachle/theduc"
 import Dichvu from "./pages/vekhachle/dichvu"
 import Congvien from "./pages/vekhachle/congvien"
 import Watershow_1 from "./pages/watershow/watershow_1"
-import Menu from "./components/menu/menu_sidebar"
+import Khiduoidai from "./pages/khampha/khiduoidai/khiduoidai"
+import Thucvat from "./pages/khampha/thucvat"
+import Cachep from "./pages/khampha/Cachepnhaolon/Cachep"
+import QuangTruong from "./pages/khampha/quangtruong/Quangtruong"
 
 export const router = createBrowserRouter([
-    {
-        path: "/menu",
-        element: <Menu />,
-    },
+    // {
+    //     path: "/menu",
+    //     element: <Menu />,
+    // },
     {
         path: "/",
         element: <Trangchu/>,
@@ -30,6 +33,24 @@ export const router = createBrowserRouter([
     {
         path: "/khampha",
         element: <Khampha/>,
+    },
+    
+    {
+        path:"/khampha/khiduoidai",
+        element: <Khiduoidai/>,
+    },
+    
+    {
+        path:"/khampha/cachep",
+        element: <Cachep/>,
+    },
+    {
+        path:"/khampha/quangtruong",
+        element: <QuangTruong/>,
+    },
+    {
+        path:"/khampha/thucvat",
+        element: <Thucvat/>,
     },
     {
         path: "/vekhachle",

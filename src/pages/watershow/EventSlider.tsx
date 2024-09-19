@@ -1,59 +1,80 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./EventSlider.css"; // CSS for 3D styling
-import banner_1 from "../../assets/banner_sukien_1.png";
-import banner_2 from "../../assets/banner_sukien_2.png";
-import banner_3 from "../../assets/banner_sukien_3.png";
-import banner_4 from "../../assets/banner_sukien_4.png";
-import banner_5 from "../../assets/banner_sukien_5.png";
+// import banner_1 from "../../assets/banner_sukien_1.png";
+// import banner_2 from "../../assets/banner_sukien_2.png";
+// import banner_3 from "../../assets/banner_sukien_3.png";
+// import banner_4 from "../../assets/banner_sukien_4.png";
+// import banner_5 from "../../assets/banner_sukien_5.png";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { fetchSukienSlider } from "../../features/sukiensliderSlice";
 
-const slides = [
-  {
-    id: 1,
-    image: banner_1,
-    title: "Sắp ra mắt nhạc nước Đầm Sen Water Show",
-    description:
-      "CVVH Đầm Sen chuẩn bị ra mắt công trình nhạc nước Đầm Sen Water Show với tổng chiều dài biểu diễn hơn 100 mét, kết hợp với khói lửa,.....",
-  },
-  {
-    id: 2,
-    image: banner_2,
-    title: "Sắp ra mắt nhạc nước Đầm Sen Water Show",
-    description:
-      "CVVH Đầm Sen chuẩn bị ra mắt công trình nhạc nước Đầm Sen Water Show với tổng chiều dài biểu diễn hơn 100 mét, kết hợp với khói lửa,.....",
-  },
-  {
-    id: 3,
-    image: banner_3,
-    title: "Sắp ra mắt nhạc nước Đầm Sen Water Show",
-    description:
-      "CVVH Đầm Sen chuẩn bị ra mắt công trình nhạc nước Đầm Sen Water Show với tổng chiều dài biểu diễn hơn 100 mét, kết hợp với khói lửa,.....",
-  },
-  {
-    id: 4,
-    image: banner_4,
-    title: "Sắp ra mắt nhạc nước Đầm Sen Water Show",
-    description:
-      "CVVH Đầm Sen chuẩn bị ra mắt công trình nhạc nước Đầm Sen Water Show với tổng chiều dài biểu diễn hơn 100 mét, kết hợp với khói lửa,.....",
-  },
-  {
-    id: 5,
-    image: banner_5,
-    title: "Sắp ra mắt nhạc nước Đầm Sen Water Show",
-    description:
-      "CVVH Đầm Sen chuẩn bị ra mắt công trình nhạc nước Đầm Sen Water Show với tổng chiều dài biểu diễn hơn 100 mét, kết hợp với khói lửa,.....",
-  },
-];
+// const slides = [
+//   {
+//     id: 1,
+//     image: banner_1,
+//     title: "Sắp ra mắt nhạc nước Đầm Sen Water Show",
+//     description:
+//       "CVVH Đầm Sen chuẩn bị ra mắt công trình nhạc nước Đầm Sen Water Show với tổng chiều dài biểu diễn hơn 100 mét, kết hợp với khói lửa,.....",
+//   },
+//   {
+//     id: 2,
+//     image: banner_2,
+//     title: "Sắp ra mắt nhạc nước Đầm Sen Water Show",
+//     description:
+//       "CVVH Đầm Sen chuẩn bị ra mắt công trình nhạc nước Đầm Sen Water Show với tổng chiều dài biểu diễn hơn 100 mét, kết hợp với khói lửa,.....",
+//   },
+//   {
+//     id: 3,
+//     image: banner_3,
+//     title: "Sắp ra mắt nhạc nước Đầm Sen Water Show",
+//     description:
+//       "CVVH Đầm Sen chuẩn bị ra mắt công trình nhạc nước Đầm Sen Water Show với tổng chiều dài biểu diễn hơn 100 mét, kết hợp với khói lửa,.....",
+//   },
+//   {
+//     id: 4,
+//     image: banner_4,
+//     title: "Sắp ra mắt nhạc nước Đầm Sen Water Show",
+//     description:
+//       "CVVH Đầm Sen chuẩn bị ra mắt công trình nhạc nước Đầm Sen Water Show với tổng chiều dài biểu diễn hơn 100 mét, kết hợp với khói lửa,.....",
+//   },
+//   {
+//     id: 5,
+//     image: banner_5,
+//     title: "Sắp ra mắt nhạc nước Đầm Sen Water Show",
+//     description:
+//       "CVVH Đầm Sen chuẩn bị ra mắt công trình nhạc nước Đầm Sen Water Show với tổng chiều dài biểu diễn hơn 100 mét, kết hợp với khói lửa,.....",
+//   },
+// ];
 
 const EventSlider3D: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const dispatch = useAppDispatch();
+const { sukienslider, loading, error } = useAppSelector((state) => state.sukienslider);
+
+
+useEffect(() => {
+  dispatch(fetchSukienSlider());
+}, [dispatch]);
+
+useEffect(() => {
+  console.log("Redux State - services: ", sukienslider); // Kiểm tra dữ liệu Redux
+}, [sukienslider]);
+
+if (loading) {
+  return <div>Loading...</div>;
+}
+
+if (error) {
+  return <div>Error: {error}</div>;
+}
 
   const nextSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    setActiveIndex((prevIndex) => (prevIndex + 1) % sukienslider.length);
   };
 
   const prevSlide = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? slides.length - 1 : prevIndex - 1
+      prevIndex === 0 ? sukienslider.length - 1 : prevIndex - 1
     );
   };
 
@@ -64,14 +85,14 @@ const EventSlider3D: React.FC = () => {
   return (
     <div className="slider-3d-container">
       <div className="slider-3d">
-        {slides.map((slide, index) => {
+        {sukienslider.map((slide, index) => {
           const relativeIndex =
-            (index - activeIndex + slides.length) % slides.length;
+            (index - activeIndex + sukienslider.length) % sukienslider.length;
           const isCenter = relativeIndex === 0;
           const isLayer2 =
-            relativeIndex === 1 || relativeIndex === slides.length - 1;
+            relativeIndex === 1 || relativeIndex === sukienslider.length - 1;
           const isLayer3 =
-            relativeIndex === 2 || relativeIndex === slides.length - 2;
+            relativeIndex === 2 || relativeIndex === sukienslider.length - 2;
 
           let translateX = "0";
           let translateZ = "0";
@@ -104,7 +125,7 @@ const EventSlider3D: React.FC = () => {
               }}
             >
               <img
-                src={slide.image}
+                src={slide.imageUrl}
                 alt={slide.title}
                 className="slide-image"
               />
@@ -161,7 +182,7 @@ const EventSlider3D: React.FC = () => {
           </svg>
         </div>
         <div className="dots-container">
-          {slides.map((_, index) => (
+          {sukienslider.map((_, index) => (
             <div
               key={index}
               className={`dot ${index === activeIndex ? "active-dot" : ""}`}

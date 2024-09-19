@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./CarouselComponent.css";
+// import slide_thanhvien_01 from "../../../assets/slide_thanhvien_01.png";
+// import slide_thanhvien_02 from "../../../assets/slide_thanhvien_02.png";
+// import slide_thanhvien_03 from "../../../assets/slide_thanhvien_03.png";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { fetchThanhviennhahang } from "../../../features/thanhvienSlice";
 
-interface CarouselComponentProps {
-  images: string[];
-  caption: string;
-}
+interface CarouselComponentProps {}
 
 const NextArrow: React.FC<any> = ({ onClick }) => (
   <div className="slick-arrow slick-next" onClick={onClick}>
@@ -49,10 +51,37 @@ const PrevArrow: React.FC<any> = ({ onClick }) => (
   </div>
 );
 
-const CarouselComponent: React.FC<CarouselComponentProps> = ({
-  images,
-  caption,
-}) => {
+// const thanhvienslide = [
+//   { url: slide_thanhvien_01, caption: "Vua đầu bếp “Jan Can Cook” từng đến giao lưu với đội ngũ bếp của nhà hàng Thủy Tạ Đầm Sen" },
+//   { url: slide_thanhvien_02, caption: "Nhà hàng Thủy Tạ Đầm Sen" },
+//   { url: slide_thanhvien_03, caption: "Xem phim Cinemax 8D tại CVVH Đầm Sen" },
+//   { url: slide_thanhvien_03, caption: "Xem phim Cinemax 8D tại CVVH Đầm Sen" },
+//   { url: slide_thanhvien_03, caption: "Xem phim Cinemax 8D tại CVVH Đầm Sen" },
+
+  
+// ];
+
+const CarouselComponent: React.FC<CarouselComponentProps> = () => {
+  const [currentSlide, setCurrentSlide] = useState(0); 
+  const dispatch = useAppDispatch();
+  const { thanhviennhahang, loading, error } = useAppSelector((state) => state.thanhviennhahang);
+
+  useEffect(() => {
+    dispatch(fetchThanhviennhahang());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log("Redux State - services: ", thanhviennhahang); 
+  }, [thanhviennhahang]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   const settings = {
     dots: true,
     infinite: true,
@@ -61,9 +90,10 @@ const CarouselComponent: React.FC<CarouselComponentProps> = ({
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    beforeChange: (oldIndex: number, newIndex: number) => setCurrentSlide(newIndex), 
     customPaging: (i: number) => (
       <img
-        src={images[i]}
+        src={thanhviennhahang[i].imageUrl}
         alt={`thumbnail-${i}`}
         className="thumbnail-image"
       />
@@ -74,15 +104,20 @@ const CarouselComponent: React.FC<CarouselComponentProps> = ({
   return (
     <div className="carousel-container">
       <Slider {...settings}>
-        {images.map((image, index) => (
+        {thanhviennhahang.map((image, index) => (
           <div key={index}>
-            <img src={image} alt={`slide-${index}`} className="main-image" />
+            <img
+              src={image.imageUrl}
+              alt={`slide-${index}`}
+              className="main-image"
+            />
           </div>
         ))}
       </Slider>
-      <div className="caption">{caption}</div>
+      <div className="caption">{thanhviennhahang[currentSlide]?.description || "No description available"}</div>
     </div>
   );
 };
+
 
 export default CarouselComponent;

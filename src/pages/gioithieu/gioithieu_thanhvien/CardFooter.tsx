@@ -1,35 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./CardFooter.css";
 import card_footer1 from "../../../assets/sukien_card_footer1.png";
 import tag_icon from '../../../assets/tag-icon.svg'
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { fetchThanhvien } from "../../../features/thanhvienSlice_footer";
 
 const CardFooter: React.FC = () => {
-  const cards = [
-    {
-      title: "Roller Coaster",
-      date: "10/02/2020",
-      description: "Cảm giác mạnh",
-      image: card_footer1, 
-    },
-    {
-      title: "Vòng xoay không gian",
-      date: "11/02/2020",
-      description: "Cảm giác mạnh",
-      image: card_footer1, 
-    },
-    {
-      title: "Vòng quay thần tốc",
-      date: "12/02/2020",
-      description: "Cảm giác mạnh",
-      image: card_footer1, 
-    },
-    {
-      title: "Cá chép nhào lộn",
-      date: "11/02/2020",
-      description: "Cảm giác mạnh",
-      image: card_footer1, 
-    },
-  ];
+  const dispatch = useAppDispatch();
+  const { thanhvien, loading, error } = useAppSelector((state) => state.thanhvien);
+
+  
+  useEffect(() => {
+    dispatch(fetchThanhvien());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log("Redux State - services: ", thanhvien); 
+  }, [thanhvien]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="sukien-footer-container">
@@ -52,9 +47,9 @@ const CardFooter: React.FC = () => {
           </svg>
         </div>
         <div className="card-container">
-          {cards.map((card, index) => (
+          {thanhvien.map((card, index) => (
             <div key={index} className="card_sk">
-              <img style={{width: '310px', height:'200px'}} src={card.image} alt={card.title} className="card-image" />
+              <img style={{width: '310px', height:'200px'}} src={card.imageUrl} alt={card.title} className="card-image" />
               <div className="card_sk_tg">
               <h3 className="card-title_sk">{card.title}</h3>
               <p className="card-date_sk">{card.date}</p>

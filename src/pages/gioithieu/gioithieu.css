@@ -23,7 +23,9 @@
   align-items: center;
 }
 .gioithieu_chitiet h1 {
-  padding: 40px 0;
+  border-bottom: 7px solid  #259e58;
+
+  padding: 30px 0;
   color: var(--heading-text-color, #259e58);
   /* Bangers/96px */
   font-family: "Bangers", sans-serif;

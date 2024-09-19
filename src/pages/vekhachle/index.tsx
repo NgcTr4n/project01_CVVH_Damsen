@@ -6,7 +6,7 @@ import banner_giave from "../../assets/banner_giave.png";
 const Vekhachle = () => {
   return (
     <Layout>
-     
+
       <Footer />
     </Layout>
   );

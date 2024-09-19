@@ -311,7 +311,7 @@ const Gioithieu = () => {
                 description="Là loại vé được bán tại các quầy trong công viên cho từng khách. Đây là các loại vé trọn gói đã được trừ vé vào cổng của quý khách"
                 buttonText="Xem thêm"
                 imageUrl={icon_giave1}
-                backgroundColor="#259E58" // Green background
+                backgroundColor="#259E58" 
                 textColor="#259E58"
                 svgColor="#259E58"
               />
@@ -321,7 +321,7 @@ const Gioithieu = () => {
                 description="Quý khách có thể vào CVVH Đầm Sen để tập thể dục quanh hồ thoáng mát vào mỗi buổi sáng, trên diện tích 32 hecta với nhiều cây xanh và không khí trong lành"
                 buttonText="Xem thêm"
                 imageUrl={icon_giave2}
-                backgroundColor="#EC008C" // Pink background
+                backgroundColor="#EC008C" 
                 textColor="#EC008C"
                 svgColor="#EC008C"
               />
@@ -333,7 +333,7 @@ const Gioithieu = () => {
                 description="Vé dịch vụ gồm có các dịch vụ như xe điện, giữ đồ, cho thuê xe đẩy, xe nôi, xe lăn."
                 buttonText="Xem thêm"
                 imageUrl={icon_giave3}
-                backgroundColor="#EC008C" // Pink background
+                backgroundColor="#EC008C" 
                 textColor="#EC008C"
                 svgColor="#EC008C"
               />

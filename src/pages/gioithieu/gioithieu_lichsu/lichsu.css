@@ -38,3 +38,10 @@
     line-height: 150%;
 }
 
+.banner_content_h1 h1{
+  border-bottom: 7px solid #259e58;
+}
+.banner_content_mota h6{
+  border-bottom: 2px solid #ec008c ;
+  margin-bottom: 2px;
+}

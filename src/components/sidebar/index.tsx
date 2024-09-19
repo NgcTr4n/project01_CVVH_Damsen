@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import "./Sidebar.css";
 import icon from "../../assets/Icon.png";
+import close_icon from "../../assets/close_icon.png";
 import logo from "../../assets/logo.png";
 
 interface NavLink {
@@ -67,6 +68,153 @@ const navLinks: NavLink[] = [
   },
   { name: "Sự kiện", link: "/watershow" },
 ];
+interface MenuItem {
+  id: string;
+  text: string;
+  link: string;
+}
+
+interface MenuSection {
+  id: number;
+  title: string;
+  items: MenuItem[];
+}
+
+interface MenuData {
+  [key: string]: MenuSection[];
+}
+
+const menuData: MenuData = {
+  "Trò chơi": [
+    {
+      id: 1,
+      title: "Cảm Giác Mạnh",
+      items: [
+        { id: "01", text: "Cá Chép Nhảy Lớn", link: "/khampha/cachep" },
+        { id: "02", text: "Lâu Đài Kinh Dị",link:"#" },
+        { id: "03", text: "Phượng Hoàng Bay",link:"#" },
+        { id: "04", text: "Spinning Coaster",link:"#" },
+        { id: "05", text: "Xe Bay Ảo Tưởng",link:"#" },
+        { id: "06", text: "Tháp Bay",link:"#" },
+        { id: "07", text: "Vòng Quay Thần Tốc",link:"#" },
+        { id: "08", text: "Power Surge",link:"#" },
+        { id: "09", text: "Tàu Vượt Thác",link:"#" },
+        { id: "10", text: "Roller Coaster",link:"#" },
+        { id: "11", text: "Vòng Xoay Không Gian",link:"#" },
+        { id: "12", text: "Đấu Trường Bò Tót",link:"#" },
+        { id: "13", text: "Xe Điện Dung",link:"#" },
+      ],
+    },
+    {
+      id: 2,
+      title: "Tương Tác Ảo",
+      items: [
+        { id: "14", text: "Xem Phim Cinemax 8D",link:"#" },
+        { id: "15", text: "Đua Xe Turbo Racing",link:"#" },
+        { id: "16", text: "9D Virtual Reality",link:"#" },
+        { id: "17", text: "Bắn Súng Run Raider",link:"#" },
+        { id: "18", text: "Lâu Đài Kỳ Thú",link:"#" },
+      ],
+    },
+    {
+      id: 3,
+      title: "Giải Trí",
+      items: [
+        { id: "19", text: "Băng Đăng",link:"#" },
+        { id: "20", text: "Đu Quay Đứng Ferris Wheel",link:"#" },
+        { id: "21", text: "Monorail",link:"#" },
+        { id: "22", text: "Đạp Vịt Pedalo",link:"#" },
+        { id: "62", text: "Massage Cá",link:"#" },
+      ],
+    },
+    {
+      id: 4,
+      title: "Thiếu Nhi",
+      items: [
+        { id: "23", text: "Ếch Nhảy",link:"#" },
+        { id: "24", text: "Diệu Nhảy Thiên Thần",link:"#" },
+        { id: "25", text: "Khủng Khí Cầu Bay",link:"#" },
+        { id: "26", text: "Hải Cẩu Vượt Thác" ,link:"#"},
+        { id: "27", text: "Ngựa Bay",link:"#" },
+        { id: "28", text: "Kids Playground",link:"#" },
+        { id: "29", text: "Khủng Long Bay",link:"#" },
+        { id: "30", text: "Siêu Nhân Robot",link:"#" },
+        { id: "31", text: "Rồng Lượn",link:"#" },
+        { id: "32", text: "Vòng Lượn Tuổi Thơ",link:"#" },
+        { id: "33", text: "Pháo Đài Bay",link:"#" },
+        { id: "34", text: "Nhà Hơi Luân Hoán",link:"#" },
+      ],
+    },
+  ],
+  "Vườn Thú": [
+    {
+      id: 1,
+      title: "",
+      items: [
+        { id: "35", text: "Khỉ Đuôi Dài",link:"/khampha/khiduoidai" },
+        { id: "36", text: "Gấu Ngựa",link:"#" },
+        { id: "37", text: "Đười Ươi Sumatra",link:"#" },
+        { id: "38", text: "Hà Mã Châu Phi",link:"#" },
+        { id: "39", text: "Voi Châu Á",link:"#" },
+        { id: "40", text: "Vượn Đen Má Vàng",link:"#" },
+        { id: "41", text: "Thủy Cung",link:"#" },
+        { id: "42", text: "Vườn Chim",link:"#" },
+        { id: "43", text: "Hổ Cái Hải Tượng",link:"#" },
+        { id: "44", text: "Cá Hóa Tiên",link:"#" },
+        { id: "45", text: "Dê Núi",link:"#" },
+      ],
+    },
+  ],
+  "Cảnh đẹp": [
+    {
+      id: 1,
+      title: "",
+      items: [
+        { id: "46", text: "Nam Tử Thượng Uyển",link:"#" },
+        { id: "47", text: "Đảo Lan Rừng",link:"#" },
+        { id: "48", text: "Vườn Nhật Bản",link:"#" },
+        { id: "49", text: "Vườn Xương Rồng",link:"#" },
+        { id: "50", text: "Địa Điểm Sống Ảo",link:"#" },
+        { id: "51", text: "Quảng Trường Vua Hùng",link:"/khampha/quangtruong" },
+        { id: "52", text: "Quảng Trường Âu Lạc",link:"#" },
+        { id: "53", text: "Quảng Trường La Mã",link:"#" },
+        { id: "54", text: "Cầu Cửu Khúc",link:"#" },
+      ],
+    },
+  ],
+  "Sân khấu": [
+    {
+      id: 1,
+      title: "",
+      items: [
+        { id: "55", text: "Sân khấu Dế Mèn",link:"#" },
+        { id: "56", text: "Rạp Xiếc Thú",link:"#" },
+        { id: "57", text: "Sân khấu Ngôi Sao",link:"#" },
+      ],
+    },
+  ],
+  "Giáo dục trải nghiệm ": [
+    {
+      id: 1,
+      title: "",
+      items: [
+        { id: "58", text: "Nhà Trưng Bày Tiêu Bản Động Vật",link:"#" },
+        { id: "59", text: "Thực vật",link:"/khampha/thucvat" },
+      ],
+    },
+  ],
+  "Ẩm thực": [
+    {
+      id: 1,
+      title: "",
+      items: [
+        { id: "55", text: "Nhà Hàng Thủy Tạ",link:"#" },
+        { id: "56", text: "Cà phê Vườn Đá",link:"#" },
+        { id: "57", text: "Damsen Plaza",link:"#" },
+      ],
+    },
+  ],
+};
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -84,14 +232,22 @@ const Sidebar = () => {
     return pathname === item.link || activeMenu === item.name;
   };
 
+  const [activeTab, setActiveTab] = useState<string>("Trò chơi");
+
+  const handleTabClick = (tab: string) => {
+    setActiveTab(tab);
+    setIsOpen(true);
+  };
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div className="sidebar">
       <div className="sidebar-content">
         {window.innerWidth >= 600 && (
           <div className="sidebar-title">
-            <a href="/menu">
-              {" "}
-              <img src={icon} alt="Icon" />
+            <a onClick={toggleSidebar}>
+              <img src={isOpen ? close_icon : icon} alt="Icon" />
             </a>
           </div>
         )}
@@ -220,6 +376,47 @@ const Sidebar = () => {
           </a>
         </div>
       </div>
+
+      {isOpen && (
+        <div className="menu-sidebar">
+          <div className="menu-tabs">
+            {Object.keys(menuData).map((key) => (
+              <div
+                key={key}
+                className={`menu-tab ${activeTab === key ? "active" : ""}`}
+                onClick={() => handleTabClick(key)}
+              >
+                {key}
+              </div>
+            ))}
+          </div>
+
+          <div className="menu-content">
+            {activeTab && (
+              <div className="menu-sections">
+                {menuData[activeTab].map((section) => (
+                  <div key={section.id} className="section">
+                    <h2>{section.title}</h2>
+                    <ul>
+                      {section.items.map((item) => (
+                        <li key={item.id}>
+                          <span
+                            className="id"
+                            style={{ width: "32px", height: "32px" }}
+                          >
+                            {item.id}
+                          </span>{" "}
+                          <a href={item.link} > {item.text}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
