@@ -9,6 +9,7 @@ interface TicketCardProps {
   buttonText: string;
   imageUrl: string;
   backgroundColor: string;
+  bgColor:string
   textColor: string;
   svgColor: string;
 }
@@ -20,13 +21,19 @@ const TicketCard: React.FC<TicketCardProps> = ({
   buttonText,
   imageUrl,
   backgroundColor,
+  bgColor,
   textColor,
   svgColor,
 }) => {
   return (
     <div className="ticket-card" style={{ backgroundColor }}>
       <div className="ticket-card-content">
-        <img src={imageUrl} alt={title} className="ticket-card-image" />
+        <div className="ticket-card-imgbg">
+          <div className="ticket-card-bg" style={{backgroundColor: bgColor}}>
+          <img src={imageUrl} alt={title} className="ticket-card-image" />
+
+          </div>
+        </div>
         <div className="ticket-card-info">
           <h3>{title}</h3>
           <h6>{price}</h6>

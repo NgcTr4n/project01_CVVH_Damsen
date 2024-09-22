@@ -35,7 +35,6 @@
 .label-description {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.9);
-  border: 1px solid #333;
   padding: 10px;
   z-index: 10;
   width: 200px;
@@ -80,4 +79,9 @@ line-height: 150%; /* 24px */
   stroke: #259E58;
   background: #fff;
   border: 1px solid #259E58;
+}
+.map_line{
+  width: 1px;
+height: 60px;
+background: #C2C2C2;
 }

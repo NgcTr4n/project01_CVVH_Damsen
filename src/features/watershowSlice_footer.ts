@@ -1,8 +1,7 @@
 // src/features/dataSlice.ts
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { collection, addDoc, getDocs } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { db, storage } from "../services/firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../services/firebaseConfig";
 
 // Định nghĩa kiểu cho dữ liệu service
 interface Waterfooter {

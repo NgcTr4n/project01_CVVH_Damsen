@@ -16,6 +16,7 @@ import quangtruongslider2Reducer from "../features/quangtruongslider2Slice";
 import quangtruongslider3Reducer from "../features/quangtruongslider3Slice";
 import quangtruongslider4Reducer from "../features/quangtruongslider4Slice";
 import cachepsliderReducer from "../features/cachepSlice";
+import khamphaSlice from "../features/khamphaSlice";
 
 const rootReducer = combineReducers({
   services: servicesReducer,
@@ -34,7 +35,8 @@ const rootReducer = combineReducers({
   quangtruongslider1: quangtruongslider1Reducer,
   quangtruongslider2: quangtruongslider2Reducer,
   quangtruongslider3: quangtruongslider3Reducer,
-  quangtruongslider4: quangtruongslider4Reducer
+  quangtruongslider4: quangtruongslider4Reducer,
+  khampha: khamphaSlice
 
 
 

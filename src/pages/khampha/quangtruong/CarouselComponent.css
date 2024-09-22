@@ -1,52 +1,50 @@
 .carousel-container {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
   max-width: 800px;
   margin: 0 auto;
 }
 
 .main-image {
- 
   width: 800px;
   height: 532px;
-    display: block;
-  margin:  0 auto ;
+  display: block;
+  margin: 0 auto;
 }
 
 .caption {
   text-align: center;
   margin-top: 10px;
   color: var(--gray-gray-500, #666);
-text-align: center;
-/* Nunito/16px/16px: Medium */
-font-family: Nunito;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 150%; /* 24px */
+  text-align: center;
+  /* Nunito/16px/16px: Medium */
+  font-family: Nunito;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
 }
 .slick-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-    cursor: pointer;
-  }
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+}
 .slick-prev,
 .slick-next {
-      font-size: 2rem;
+  font-size: 2rem;
   z-index: 1;
 }
 .slick-prev svg {
-    position: absolute;
-    left: -75px;
+  position: absolute;
+  left: -75px;
 }
-.slick-next svg{
-    position: absolute;
-    left: -7px;
-    top:-9px;
+.slick-next svg {
+  position: absolute;
+  left: -7px;
+  top: -9px;
 }
-
 
 .custom-thumb-dots {
   display: flex !important;
@@ -65,10 +63,13 @@ line-height: 150%; /* 24px */
   width: 246px;
   height: 164px;
   opacity: 0.5;
-  transition: opacity 0.3s ease;
+  filter: brightness(40%);
+  transition: opacity 0.3s ease, filter 0.3s ease;
   object-fit: cover;
 }
 .custom-thumb-dots .slick-active img {
+  filter: brightness(100%);
+
   opacity: 1;
 }
 .thumbnail-image {
@@ -77,29 +78,25 @@ line-height: 150%; /* 24px */
   opacity: 1;
 
   transition: opacity 0.3s ease-in-out;
-
 }
 
 .slick-active .thumbnail-image {
   border-color: magenta;
 }
 .thumbnail-image-blur {
-    opacity: 0.3; /* Làm mờ ảnh nếu không tải được */
-  }
+  opacity: 0.3; /* Làm mờ ảnh nếu không tải được */
+}
 
+.carousel-container .slick-slide img {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
 
-  .carousel-container .slick-slide img {
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  carousel-container .slick-active img {
-    opacity: 1;
-    transform: scale(1.1); /* Optional for enlarging the center image */
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  .custom-thumb-dots img:hover {
-    opacity: 0.8;
-  }
-  
-  
+carousel-container .slick-active img {
+  opacity: 1;
+  transform: scale(1.1); /* Optional for enlarging the center image */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.custom-thumb-dots img:hover {
+  opacity: 0.8;
+}

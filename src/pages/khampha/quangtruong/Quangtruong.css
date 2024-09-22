@@ -225,3 +225,12 @@
   align-items: center;
   gap: 80px;
 }
+.part p {
+  color: var(--gray-gray-500, #666);
+  /* Nunito/16px/16px: Regular */
+  font-family: Nunito;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+}

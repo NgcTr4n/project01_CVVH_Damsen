@@ -121,7 +121,7 @@ const Trangchu = () => {
               </svg>
             </div>
             <div className="icon_right">
-              <div className="icon_phone">
+              {/* <div className="icon_phone">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="32"
@@ -150,7 +150,7 @@ const Trangchu = () => {
                     fill="#259E58"
                   />
                 </svg>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
