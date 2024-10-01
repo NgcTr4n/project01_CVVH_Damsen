@@ -1,34 +1,74 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../../layout";
 import Footer from "../../../components/footer";
 import "./dichvu.css";
-import banner_vedichvu from "../../../assets/banner_vedichvu.png";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { fetchVedichvucontent } from "../../../features/vedichvucontentSlide";
+import { fetchDvchothue } from "../../../features/dvchothueSlide";
+import { fetchDvxedien } from "../../../features/dvxedienSlide";
+import { fetchVedichvusubcontent } from "../../../features/vedichvusubcontentSlide";
 
-const dichvu = () => {
+const Dichvu = () => {
+  const dispatch = useAppDispatch();
+  const { vedichvucontent, loading, error } = useAppSelector(
+    (state) => state.vedichvucontent
+  );
+  const { dvchothue } = useAppSelector((state) => state.dvchothue);
+  const { dvxedien } = useAppSelector((state) => state.dvxedien);
+  const { vedichvusubcontent } = useAppSelector(
+    (state) => state.vedichvusubcontent
+  );
+
+  useEffect(() => {
+    dispatch(fetchVedichvucontent());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchDvchothue());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchDvxedien());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchVedichvusubcontent());
+  }, [dispatch]);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   return (
     <Layout>
       <div className="giave_container">
         <div style={{ width: "100%" }} className="banner_giave">
-          <img src={banner_vedichvu} />
+          {vedichvucontent.map((item, index) => (
+            <img src={item.banner1} />
+          ))}
         </div>
         <div className="banner_content">
           <div className="banner_content_h1">
-            <h1 style={{ width: "685px" }}>Vé dịch vụ</h1>
+            {vedichvucontent.map((item, index) => (
+              <h1 style={{ width: "685px" }}>{item.title}</h1>
+            ))}
           </div>
           <div className="banner_content_mota">
             <h6>Mô tả</h6>
-            <p>Trải nghiệm các dịch vụ tiện ích của Đầm Sen ngay bạn nhé!</p>
+            {vedichvucontent.map((item, index) => (
+              <p>{item.mota}</p>
+            ))}
           </div>
         </div>
         <div className="baomat_mochoatdong">
-          <p>
-            Bên cạnh các vé tham quan và chơi trò chơi tại Đầm Sen, chúng tôi
-            còn có các vé dịch vụ cộng thêm dành cho du khách. Trong đó có các
-            dịch vụ như xe điện, giữ đồ, cho thuê xe đẩy, xe nôi, xe lăn.
-          </p>
+          {vedichvucontent.map((item, index) => (
+            <p>{item.description}</p>
+          ))}
         </div>
+
         <div className="baomat_mochoatdong">
-          <h5>DỊCH VỤ XE ĐIỆN</h5>
+          {vedichvusubcontent.map((item, index) => (
+            <h5>{item.title1}</h5>
+          ))}
           <div className="dichvu_canhbao">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -42,17 +82,14 @@ const dichvu = () => {
                 fill="#DFA100"
               />
             </svg>
-            <span>Lưu ý: Không áp dụng Vé trọn gói Đầm sen!</span>
+            {vedichvusubcontent.map((item, index) => (
+            <span>{item.note1}</span>
+          ))}
           </div>
-          <p>
-            Bên cạnh việc tham quan Đầm Sen bằng “đoàn tàu cổ tích” (bao gồm
-            trong <a href="#">vé trọn gói</a> và vé <a href="#">Silver</a> ), du
-            khách có thể thưởng ngoạn bằng dịch vụ xe điện riêng của Đầm Sen.
-            Tùy vào loại vé, hành trình xe điện sẽ đưa quý khách từ trạm đón
-            (khu <a href="#">trò chơi cảm giác mạnh</a> ở quảng trường Âu Lạc),
-            đi quanh hồ Đầm Sen, tham quan vườn chim thú ở khu B, và về vườn Lan
-            rừng để ngắm những loại hoa đẹp nhất tại Đầm Sen.
-          </p>
+          {vedichvusubcontent.map((item, index) => (
+            <p>{item.description1}</p>
+          ))}
+         
           <div className="dichvu_bang">
             <table>
               <thead>
@@ -61,37 +98,23 @@ const dichvu = () => {
                   <th>Số người</th>
                   <th>Số tiền</th>
                 </tr>
-                <tr>
-                  <td>Happy car</td>
-                  <td>1 – 5</td>
-                  <td>150.000 đồng/30 phút</td>
-                </tr>
-                <tr>
-                  <td>Family car</td>
-                  <td>6 – 7</td>
-                  <td>200.000 đồng/30 phút</td>
-                </tr>
-                <tr>
-                  <td>Friendly car</td>
-                  <td>8 – 10</td>
-                  <td>250.00 đồng/30 phút</td>
-                </tr>
-                <tr>
-                  <td>Family car</td>
-                  <td>11 – 12</td>
-                  <td>300.000 đồng/30 phút</td>
-                </tr>
-                <tr>
-                  <td>Cung đường</td>
-                  <td>1 – 5</td>
-                  <td>50.000 đồng/chuyến</td>
-                </tr>
+                {dvxedien.map((card) => (
+                  <tr key={card.id}>
+                    <td>{card.loaihinh}</td>
+
+                    <td>{card.songuoi}</td>
+                    <td>{card.sotien}</td>
+                  </tr>
+                ))}
               </thead>
             </table>
           </div>
         </div>
+
         <div className="baomat_mochoatdong">
-          <h5>DỊCH VỤ CHO THUÊ</h5>
+          {vedichvusubcontent.map((item, index) => (
+            <h5>{item.title2}</h5>
+          ))}
           <div className="dichvu_canhbao">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -105,9 +128,9 @@ const dichvu = () => {
                 fill="#DFA100"
               />
             </svg>
-            <span>
-              Lưu ý: Tiền thế chân từ 300.000 đồng đến 500.000 đồng + CMND
-            </span>
+            {vedichvusubcontent.map((item, index) => (
+            <span>{item.note2}</span>
+          ))}
           </div>
           <div className="dichvu_bang">
             <table>
@@ -118,54 +141,43 @@ const dichvu = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td style={{ display: "flex", alignItems: "flex-start" }}>
-                    Xe đẩy
-                  </td>
-                  <td>
-                    50.000 đồng/lần (Cỡ nhỏ)
-                    <br />
-                    80.000 đồng/lần (Cỡ lớn)
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ display: "flex", alignItems: "flex-start" }}>
-                    Xe nôi
-                  </td>
-                  <td>
-                    80.000 đồng/lần (Cỡ nhỏ)
-                    <br />
-                    120.000 đồng/lần (Cỡ lớn)
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ display: "flex", alignItems: "flex-start" }}>
-                    Xe lăn
-                  </td>
-                  <td>100.000 đồng/lần</td>
-                </tr>
-                <tr>
-                  <td style={{ display: "flex", alignItems: "flex-start" }}>
-                    Tủ giữ đồ
-                  </td>
-                  <td>20.000 đồng/hộc tủ/lần</td>
-                </tr>
+                {dvchothue.map((card) => (
+                  <tr key={card.id}>
+                    <td style={{ display: "flex", alignItems: "flex-start" }}>
+                      {card.chothue}
+                    </td>
+                    <td>
+                      {" "}
+                      {card.gia.map((giaItem, index) => (
+                        <span
+                          style={{
+                            color: "#666",
+                            fontFamily: "Nunito",
+                            fontSize: "18px",
+                          }}
+                          key={index}
+                        >
+                          {giaItem}
+                          <br />
+                        </span>
+                      ))}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </div>
-        <div className="baomat_mochoatdong">
-          <h5>GHI CHÚ</h5>
-          <p>
-            Vé dịch vụ này không bao gồm trong các loại vé cổng, hay vé trọn
-            gói, cũng như Silver. Để biết thêm về những loại vé này, xin vui
-            lòng xem <a href="#">tại đây</a>
-          </p>
-        </div>
+        {vedichvusubcontent.map((item, index) => (
+          <div className="baomat_mochoatdong">
+            <h5>{item.title3}</h5>
+            <p>{item.description3} {" "} <a href="#">tại đây</a></p>
+          </div>
+        ))}
       </div>
       <Footer />
     </Layout>
   );
 };
 
-export default dichvu;
+export default Dichvu;

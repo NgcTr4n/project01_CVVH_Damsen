@@ -25,6 +25,7 @@ const TicketCard: React.FC<TicketCardProps> = ({
   textColor,
   svgColor,
 }) => {
+  
   return (
     <div className="ticket-card" style={{ backgroundColor }}>
       <div className="ticket-card-content">

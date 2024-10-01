@@ -1,30 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../../layout";
 import Footer from "../../../components/footer";
 import banner_theduc from "../../../assets/banner_theduc.png";
 import "./theduc.css";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { fetchVetaptheduccontent } from "../../../features/vetaptheduccontentSlide";
 
-const theduc = () => {
+const Theduc = () => {
+  const dispatch = useAppDispatch();
+  const { vetaptheduccontent, loading, error } = useAppSelector(
+    (state) => state.vetaptheduccontent
+  );
+
+  useEffect(() => {
+    dispatch(fetchVetaptheduccontent());
+  }, [dispatch]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   return (
     <Layout>
-      <div className="giave_container">
+    {vetaptheduccontent.map((theduc, index)=>(
+        <div className="giave_container">
         <div className="banner_giave">
-          <img src={banner_theduc} />
+          <img src={theduc.banner1} />
         </div>
         <div className="banner_content">
           <div className="banner_content_h1">
-            <h1>Vé tập thể dục</h1>
+            <h1>{theduc.title}</h1>
           </div>
           <div className="banner_content_mota">
             <h6>Mô tả</h6>
-            <p>Đầm Sen là nơi tập thể dục yêu thích của hội người cao tuổi</p>
+            <p>{theduc.mota}</p>
           </div>
         </div>
         <div className="baomat_mochoatdong">
           <p>
-            Quý khách có thể vào CVVH Đầm Sen để tập thể dục quanh hồ thoáng mát
-            vào mỗi buổi sáng, trên diện tích 32 hecta với nhiều cây xanh và
-            không khí trong lành của một công viên giải trí hàng đầu Việt Nam.
+         {theduc.description}
           </p>
         </div>
         <div className="theduc_sticket_section">
@@ -67,7 +84,7 @@ const theduc = () => {
             </div>
             <div className="theduc_title_green">
                 <h2 className="title" style={{color:'#259E58'}}>GIỜ MỞ CỬA</h2>
-                <p>4h00 - 8h00 <br />
+                <p>4h00 - 8h00<br />
                 (mỗi ngày)</p>
             </div>
           </div>
@@ -176,9 +193,10 @@ const theduc = () => {
           </div>
         </div>
       </div>
+    ))}
       <Footer />
     </Layout>
   );
 };
 
-export default theduc;
+export default Theduc;

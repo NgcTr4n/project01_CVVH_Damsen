@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../layout";
 import Footer from "../../components/footer";
 import EventSlider from "./EventSlider";
 import "./sukien.css";
 import CardList from "./CardList";
 import CardFooter from "./CardFooter";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { fetchWatershowcontents } from "../../features/watershowcontentSlice";
 
 const Watershow = () => {
+  
   return (
     <Layout>
+    
       <div className="giave_container">
         <div className="banner_content_h1">
           <h1>Sự kiện</h1>

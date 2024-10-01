@@ -1,24 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../../layout";
 import Footer from "../../../components/footer";
 import "./vekhachle.css";
 import banner_giave from "../../../assets/banner_giave.png";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { fetchChuy } from "../../../features/chuySlide";
+import { fetchCongviencontent } from "../../../features/congviencontentSlide";
 const Vekhachle = () => {
+  const dispatch = useAppDispatch();
+  const { chuy, loading, error } = useAppSelector((state) => state.chuy);
+  const { congviencontent } = useAppSelector((state) => state.congviencontent);
+
+  useEffect(() => {
+    dispatch(fetchChuy());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchCongviencontent());
+  }, [dispatch]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   return (
     <Layout>
       <div className="giave_container">
         <div className="banner_giave">
-          <img src={banner_giave} />
+          {congviencontent.map((item, index) => (
+            <img src={item.banner} />
+          ))}
         </div>
         <div className="banner_content">
           <div className="banner_content_h1">
-            <h1>Vé trong công viên</h1>
+            {congviencontent.map((item, index) => (
+              <h1>{item.title}</h1>
+            ))}
           </div>
           <div className="banner_content_mota">
             <h6>Mô tả</h6>
-            <p>
-              Đầm Sen là điểm check-in được ưa chuộng của giới trẻ hiện nay.
-            </p>
+            {congviencontent.map((item, index) => (
+              <p>{item.mota}</p>
+            ))}
           </div>
         </div>
         <div className="giave_sticket_section">
@@ -564,36 +589,13 @@ const Vekhachle = () => {
         </div>
         <div className="gioithieu_giave_luuy">
           <h5>Chú ý</h5>
-          <ul>
-            <li>
-              <b>Giờ bán vé:</b> 8 giờ 00 - 17 giờ 30
-            </li>
-            <li>
-              <b>Vé mua từ cổng:</b> Vé được bán tại 2 cổng chính: số 1A Lạc
-              Long Quân (hoặc số 3 Hòa Bình) và cổng số 2 (nhà hàng Thủy Tạ).
-            </li>
-            <li>
-              <b>Vé mua trong công viên:</b> Loại vé bán tại các quầy trong công
-              viên. Đây là vé trọn gói đã được trừ vé vào cổng của quý khách.
-            </li>
-            <li>
-              <b>Vé từ cổng Công viên nước:</b> Vé bán từ cổng liên thông phía
-              công viên nước. Dành cho du khách vui chơi tại công viên nước và
-              muốn sang CVVH Đầm Sen.
-            </li>
-            <li>
-              <b>&gt; 1,4m:</b> Người cao trên 1,4m
-            </li>
-            <li>
-              <b>&lt; 1,4m:</b> Người cao dưới 1,4m
-            </li>
-            <li>
-              <b>Trẻ em dưới 1m:</b> Miễn phí (phải đi cùng với người lớn).
-            </li>
-            <li>
-              <b>Vé mời:</b> Giảm 50% vé trọn gói (áp dụng mua từ cổng).
-            </li>
-          </ul>
+          {chuy.map((item, index) => (
+            <ul key={index}>
+              <li>
+                <b>{item.content}</b> {item.description}
+              </li>
+            </ul>
+          ))}
         </div>
       </div>
       <Footer />

@@ -1,11 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../layout";
 import Footer from "../../components/footer";
-import gioithieu_banner from "../../assets/banner_gioithieu.png";
-import gioithieu_1 from "../../assets/gioithieu_1.png";
-import gioithieu_2 from "../../assets/gioithieu_2.png";
-import gioithieu_3 from "../../assets/gioithieu_3.png";
-import gioithieu_4 from "../../assets/gioithieu_4.png";
 
 //icon_giave
 import icon_giave1 from "../../assets/icon_giave1.png";
@@ -18,32 +13,74 @@ import TicketCard from "./TicketCard";
 import "./TicketGrid.css";
 
 import "./gioithieu.css";
+import { fetchChuy } from "../../features/chuySlide";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { fetchGioithieucontent } from "../../features/gioithieucontentSlide";
+import { fetchGioithieulist } from "../../features/gioithieulistSlide";
+import { fetchGiave } from "../../features/giaveSlide";
 const Gioithieu = () => {
+  const dispatch = useAppDispatch();
+  const { chuy, loading, error } = useAppSelector((state) => state.chuy);
+  const { gioithieucontent} = useAppSelector((state) => state.gioithieucontent);
+  const { gioithieulist} = useAppSelector((state) => state.gioithieulist);
+
+  const { giave} = useAppSelector((state) => state.giave);
+
+  useEffect(() => {
+    dispatch(fetchChuy());
+  }, [dispatch]);
+  
+  useEffect(() => {
+    dispatch(fetchGioithieucontent());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchGioithieulist());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchGiave());
+  }, [dispatch]);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   return (
+    
     <Layout>
       <div className="gioithieu_container">
+      {
+            gioithieucontent.map((item, index)=>(
+
+          
         <div className="gioithieu_banner">
-          <img src={gioithieu_banner} alt="" />
+        <img src={item.banner} alt="" />
+
+          
           <p>
-            Công viên Văn Hóa Đầm Sen với hơn 30 trò chơi, địa điểm check in và
-            nhiều loại thú quý hiếm
+         {item.description}
           </p>
         </div>
+          ))
+        }
         <div className="gioithieu_chitiet">
-          <h1>Đầm sen thế giới tuyệt vời</h1>
-          <div className="gioithieu_chitiet_frame">
+          {
+            gioithieucontent.map((item, index)=>(
+              <h1>{item.title}</h1>
+
+            ))
+          }
+          {gioithieulist.map((intro, index) => (
+        <div className="gioithieu_chitiet_frame" key={intro.id}>
+          {/* Chia màu sắc theo vị trí */}
+          {index % 2 === 0 ? (
             <div className="chitiet_frame_green">
               <div className="chitiet_frame_green_content">
                 <img src={bg_green} alt="" />
-
                 <div className="frame_green_text">
-                  <h2>Hơn 30 trò chơi</h2>
-                  <p>
-                    Công viên Văn hóa Đầm Sen có 13 trò chơi cảm giác mạnh (Tàu
-                    lượn siêu tốc, vượt thác, Power Surge…); 5 trò chơi tương
-                    tác ảo công nghệ hiện đại; 5 trò chơi thư giãn; 12 trò chơi
-                    thiếu nhi; và nhiều trò chơi khác.
-                  </p>
+                  <h2>{intro.title}</h2>
+                  <p>{intro.description}</p>
                   <button className="chitiet_frame_green_button">
                     Xem thêm{" "}
                     <span>
@@ -57,39 +94,29 @@ const Gioithieu = () => {
                         <path
                           d="M21.125 15L16.125 10M21.125 15L16.125 20M21.125 15L7.0625 15"
                           stroke="#259E58"
-                          stroke-width="2.19373"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="2.19373"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                     </span>
                   </button>
                 </div>
               </div>
+              <div className="chitiet_frame_green_img">
+                <img src={intro.banner} alt={intro.title} />
+              </div>
             </div>
-
-            <div className="chitiet_frame_green_img">
-              <img src={gioithieu_1} alt="" />
-            </div>
-          </div>
-          <div className="gioithieu_chitiet_frame">
-            <div className="chitiet_frame_pink_img">
-              <img src={gioithieu_2} alt="" />
-            </div>
+          ) : (
             <div className="chitiet_frame_pink">
+              <div className="chitiet_frame_pink_img">
+                <img src={intro.banner} alt={intro.title} />
+              </div>
               <div className="chitiet_frame_pink_content">
                 <img src={bg_green} alt="" />
-
                 <div className="frame_pink_text">
-                  <h2>Nhiều loại thú quý hiếm</h2>
-                  <p>
-                    Đầm Sen còn được biết đến như một vườn thú có thể nuôi sinh
-                    sản được các loại động vật quý hiếm (thuộc sách đỏ) như:
-                    đười ươi Sumatra (sinh 2 lần); vượn má vàng; chim già đẩy,
-                    chim Giang sen… Ngoài ra còn có một Thủy cung với các loài
-                    thủy sinh vật biển và cá Amazon phong phú, như cá mập, cá
-                    Hải tượng (2 mét)…
-                  </p>
+                  <h2>{intro.title}</h2>
+                  <p>{intro.description}</p>
                   <button className="chitiet_frame_pink_button">
                     Xem thêm{" "}
                     <span>
@@ -103,9 +130,9 @@ const Gioithieu = () => {
                         <path
                           d="M21.125 15L16.125 10M21.125 15L16.125 20M21.125 15L7.0625 15"
                           stroke="#EC008C"
-                          stroke-width="2.19373"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="2.19373"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                     </span>
@@ -113,88 +140,10 @@ const Gioithieu = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="gioithieu_chitiet_frame">
-            <div className="chitiet_frame_green">
-              <div className="chitiet_frame_green_content">
-                <img src={bg_green} alt="" />
-
-                <div className="frame_green_text">
-                  <h2>Nhà hàng Thủy Tạ Đầm Sen</h2>
-                  <p>
-                    Ẩm thực trong Công viên Văn hóa Đầm Sen gồm nhiều món ăn
-                    đường phố trong công viên, đặc biệt là nhà hàng Thủy Tạ, với
-                    không gian thưởng thức ẩm thực bên hồ.
-                  </p>
-                  <button className="chitiet_frame_green_button">
-                    Xem thêm{" "}
-                    <span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="31"
-                        height="30"
-                        viewBox="0 0 31 30"
-                        fill="none"
-                      >
-                        <path
-                          d="M21.125 15L16.125 10M21.125 15L16.125 20M21.125 15L7.0625 15"
-                          stroke="#259E58"
-                          stroke-width="2.19373"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="chitiet_frame_green_img">
-              <img src={gioithieu_3} alt="" />
-            </div>
-          </div>
-          <div className="gioithieu_chitiet_frame">
-            <div className="chitiet_frame_pink_img">
-              <img src={gioithieu_4} alt="" />
-            </div>
-            <div className="chitiet_frame_pink">
-              <div className="chitiet_frame_pink_content">
-                <img src={bg_green} alt="" />
-
-                <div className="frame_pink_text">
-                  <h2>Cà phê Vườn Đá</h2>
-                  <p>
-                    Cà phê Vườn đá có không gian rộng, và nhiều cây xanh tại Sài
-                    Gòn. Đặc biệt, trong khuôn viên cà phê có một bộ sưu tập đá
-                    khổng lồ, với nhiều hình dáng kỳ dị theo nhãn quan của mỗi
-                    người. Buổi sáng thứ bảy và chủ nhật, quán thường đông khách
-                    do có nhạc sống, với những ca khúc bất hủ của thập niên
-                    70-80, do các ban nhạc chuyên nghiệp TP.HCM biểu diễn.
-                  </p>
-                  <button className="chitiet_frame_pink_button">
-                    Xem thêm{" "}
-                    <span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="31"
-                        height="30"
-                        viewBox="0 0 31 30"
-                        fill="none"
-                      >
-                        <path
-                          d="M21.125 15L16.125 10M21.125 15L16.125 20M21.125 15L7.0625 15"
-                          stroke="#EC008C"
-                          stroke-width="2.19373"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          )}
+        </div>
+      ))}
+         
         </div>
         <div className="gioithieu_hoatdong">
           <h1>Thời gian hoạt động</h1>
@@ -304,59 +253,32 @@ const Gioithieu = () => {
         <div className="gioithieu_giave">
           <h1>Giá vé</h1>
           <div className="ticket-grid">
-            <div className="ticket-row">
-              <TicketCard
-                title="Vé Khách Lẻ"
-                price="80k - 380k/vé/người"
-                description="Là loại vé được bán tại các quầy trong công viên cho từng khách. Đây là các loại vé trọn gói đã được trừ vé vào cổng của quý khách"
-                buttonText="Xem thêm"
-                imageUrl={icon_giave1}
-                backgroundColor="#259E58"
-                bgColor="#C5E0CF" 
-                textColor="#259E58"
-                svgColor="#259E58"
-              />
-              <TicketCard
-                title="Vé Thể Dục"
-                price="5k/vé/người"
-                description="Quý khách có thể vào CVVH Đầm Sen để tập thể dục quanh hồ thoáng mát vào mỗi buổi sáng, trên diện tích 32 hecta với nhiều cây xanh và không khí trong lành"
-                buttonText="Xem thêm"
-                imageUrl={icon_giave2}
-                backgroundColor="#EC008C"
-                bgColor="#EFCFE0"  
-                textColor="#EC008C"
-                svgColor="#EC008C"
-              />
-            </div>
-            <div className="ticket-row">
-              <TicketCard
-                title="Vé Dịch Vụ"
-                price="120k - 380k/vé/người"
-                description="Vé dịch vụ gồm có các dịch vụ như xe điện, giữ đồ, cho thuê xe đẩy, xe nôi, xe lăn."
-                buttonText="Xem thêm"
-                imageUrl={icon_giave3}
-                backgroundColor="#EC008C"
-                bgColor="#EFCFE0" 
-                textColor="#EC008C"
-                svgColor="#EC008C"
-              />
-              <TicketCard
-                title="Vé Tập Thể"
-                price="120k - 380k/vé/người"
-                description="Nhóm bạn, cơ quan đoàn thể, Trường học, công ty du lịch, công nhân, chúng tôi có giá vé tập thể ưu đãi cho Quý cơ quan khi đến tham quan vui chơi tại CVVH Đầm Sen"
-                buttonText="Xem thêm"
-                imageUrl={icon_giave4}
-                backgroundColor="#259E58"
-                bgColor="#C5E0CF"
-                textColor="#259E58"
-                svgColor="#259E58"
-              />
-            </div>
+          {giave.map((ticket) => (
+        <TicketCard
+          key={ticket.id}
+          title={ticket.title}
+          price={ticket.price}
+          description={ticket.description}
+          buttonText="Xem thêm"
+          imageUrl={ticket.imageUrl}
+          backgroundColor={ticket.backgroundColor}
+          bgColor={ticket.bgColor}
+          textColor={ticket.textColor}
+          svgColor={ticket.svgColor}
+        />
+      ))}
           </div>
           <div className="gioithieu_giave_luuy">
             <h5>Chú ý</h5>
-            <ul>
-              <li>
+            {chuy.map((item, index)=>(
+                <ul key={index}>
+                     <li>
+                <b>{item.content}</b> {item.description}
+              </li>
+                </ul>
+            ))}
+           
+              {/* <li>
                 <b>Giờ bán vé:</b> 8 giờ 00 - 17 giờ 30
               </li>
               <li>
@@ -385,7 +307,7 @@ const Gioithieu = () => {
               <li>
                 <b>Vé mời:</b> Giảm 50% vé trọn gói (áp dụng mua từ cổng).
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </div>

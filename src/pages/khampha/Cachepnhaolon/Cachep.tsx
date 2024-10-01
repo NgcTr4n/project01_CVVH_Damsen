@@ -1,16 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../../../components/footer";
 import Layout from "../../../layout";
 
 
 import "./Cachep.css";
-// import CardFooter from "./CardFooter";
-// import cachep01 from "../../../assets/Cachep/cachep_01.png"
-// import cachep02 from "../../../assets/Cachep/cachep_02.png"
-// import cachep04 from "../../../assets/Cachep/cachep_04.png"
-import banner_cachep from "../../../assets/Cachep/banner_cachep.png"
+
 import CarouselComponent from "./CarouselComponent";
 import CardFooter from "./CardFooter";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { fetchCachepcontent } from "../../../features/cachepcontentSlide";
 
 // const imageUrls = [
 //   cachep01,
@@ -34,15 +32,37 @@ import CardFooter from "./CardFooter";
   
 
 const Cachep = () => {
+  const dispatch = useAppDispatch();
+  const { cachepcontent, loading, error } = useAppSelector((state) => state.cachepcontent);
+
+  
+  useEffect(() => {
+    dispatch(fetchCachepcontent());
+  }, [dispatch]);
+
+
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+  
   return (
     <Layout>
       <div className="giave_container">
         <div className="banner_giave">
-          <img src={banner_cachep} />
+        {cachepcontent.map((item, index)=>(
+          <img src={item.banner} />
+        ))}
         </div>
         <div className="banner_content">
           <div className="banner_content_h1">
-            <h1>Cá chép nhào lộn </h1>
+          {cachepcontent.map((item, index)=>(
+              <h1 key={index}>{item.title}</h1>
+            ))}
             <div className="banner_content_info">
               {/* Icon và text Cảnh đẹp */}
               <div className="info_item">
@@ -58,7 +78,9 @@ const Cachep = () => {
                     fill="#EC008C"
                   />
                 </svg>
-                <p className="canhdep">Cảm giác mạnh</p>
+                {cachepcontent.map((item, index)=>(
+              <p className="canhdep" key={index}>{item.content}</p>
+            ))}
               </div>
 
               {/* Icon và text ngày tháng */}
@@ -78,23 +100,26 @@ const Cachep = () => {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <p className="time">11/02/2020</p>
+              {cachepcontent.map((item, index)=>(
+              <p className="time" key={index}>{item.date}</p>
+            ))}
               </div>
             </div>
           </div>
           <div className="banner_content_mota">
             <h6>Mô tả</h6>
-            <p>Trò chơi Cá chép nhào lộn tại CVVH Đầm Sen</p>
+            {cachepcontent.map((item, index)=>(
+              <p key={index}>{item.mota}</p>
+            ))}
           </div>
         </div>
         <div className="baomat_mochoatdong">
           <div className="thanhvien_content">
             <div style={{ width: "973px" }}>
 
-              <p style={{ width: "100%" }}>
-              Cá chép nhào lộn là trò chơi cảm giác mạnh do Công ty Cổ phần Dịch vụ Du lịch Phú Thọ (Phuthotourist) đầu tư tại CVVH Đầm Sen. Đây là trò chơi hình thức con lắc Pendulum. Trò chơi gồm 2 con tàu hình cá chép, đong đưa theo trục đứng. Trò chơi này cũng tương tự như Phượng hoàng bay, nhưng có thể đánh vòng đến 360 độ.
-              Người chơi ngồi bên trên sẽ được đưa lên cao đến hơn 10m, rồi rơi tự do xuống, lại bật lên nhiều vòng. Đỉnh điểm là khi cặp cá chép nhào lộn ngược trên không, khiến người chơi phải la hét vì phấn khích. Trò chơi nằm ở khu cảm giác mạnh tại cổng số 1 (đường Lạc Long Quân).
-              </p>
+            {cachepcontent.map((item, index)=>(
+              <p key={index}>{item.description}</p>
+            ))}
             </div>
           </div>
         </div>

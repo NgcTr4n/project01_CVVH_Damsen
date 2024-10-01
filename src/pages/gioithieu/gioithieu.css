@@ -145,17 +145,19 @@
 }
 .chitiet_frame_pink_content {
   position: absolute;
-  background-color: #ec008c;
-  width: 992px;
-  height: 532px;
-  padding: 40px;
-  color: white;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  z-index: 1;
+    background-color: #ec008c;
+    width: 992px;
+    top: 0;
+    left: 450px;
+    height: 532px;
+    padding: 40px;
+    color: white;
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 1;
 }
 .frame_pink_text {
   width: 659px;

@@ -3,9 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./CarouselComponent.css";
-import cachep01 from "../../../assets/Cachep/cachep_01.png";
-import cachep02 from "../../../assets/Cachep/cachep_02.png";
-import cachep04 from "../../../assets/Cachep/cachep_04.png";
+
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { fetchCachepslider } from "../../../features/cachepSlice";
 

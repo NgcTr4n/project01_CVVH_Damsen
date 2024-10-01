@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import "./CardFooter.css";
-import card_footer1 from "../../../assets/sukien_card_footer1.png";
 import tag_icon from '../../../assets/tag-icon.svg'
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { fetchCachep } from "../../../features/cachepSlice_footer";

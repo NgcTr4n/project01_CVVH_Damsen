@@ -1,27 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../../layout";
 import Footer from "../../../components/footer";
 import "./sukien.css";
 import CardList from "./CardList";
 import CardFooter from "./CardFooter";
 import banner_thucvat from "../../../assets/banner_thucvat.png";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { fetchThucvatcontent } from "../../../features/thucvatcontentSlide";
 
 const Thucvat = () => {
+  const dispatch = useAppDispatch();
+  const { thucvatcontent, loading, error } = useAppSelector(
+    (state) => state.thucvatcontent
+  );
+
+  useEffect(() => {
+    dispatch(fetchThucvatcontent());
+  }, [dispatch]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <Layout>
       <div className="giave_container">
         <div className="banner_content_h1">
-          <h1>Sự kiện</h1>
+        {thucvatcontent.map((item, index) => (
+              <h1 key={index}>{item.title}</h1>
+            ))}
         </div>
         <div className="lotus-card">
           <div className="lotus-content">
-            <h1>Hoa sen</h1>
+          {thucvatcontent.map((item, index) => (
+              <h1 key={index}>{item.title2}</h1>
+            ))}
             <div className="lotus_line"></div>
-            <p>
-              Hoa sen từ lâu đã được biết tới là loài hoa thanh khiết có ý nghĩa
-              truyền thống lâu đời ở phương Đông. Sen mọc và lớn lên giữa bùn
-              lầy nhưng không hề vấy bẩn mà bỏ lại nhiễm, vậy bẩn.
-            </p>
+            {thucvatcontent.map((item, index) => (
+              <p key={index}>{item.description}</p>
+            ))}
             <div className="lotus-footer">
               <span className="lotus-type">
                 <svg

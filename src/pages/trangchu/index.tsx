@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import Layout from "../../layout";
 import Slider from "react-slick";
 import Rectangle1525 from "../../assets/Rectangle1525.png";
@@ -6,12 +6,30 @@ import Rectangle1524 from "../../assets/Rectangle1524.png";
 import logo from "../../assets/logo.png";
 import "./trangchu.css";
 import { Link } from "react-router-dom";
+import { fetchTrangchu } from "../../features/trangchuSlide";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 const images = [Rectangle1525, Rectangle1524];
 
 const Trangchu = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const sliderRef = useRef<Slider>(null);
+  const dispatch = useAppDispatch();
+  const { trangchu, loading, error } = useAppSelector((state) => state.trangchu);
 
+  
+  useEffect(() => {
+    dispatch(fetchTrangchu());
+  }, [dispatch]);
+
+
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   const settings = {
     dots: true,
     infinite: true,
@@ -54,9 +72,9 @@ const Trangchu = () => {
     <Layout>
       <div className="home_banner">
         <Slider {...settings} ref={sliderRef}>
-          {images.map((image, index) => (
+          {trangchu.map((image, index) => (
             <div className="home_img" key={index}>
-              <img src={image} alt={`Banner ${index}`} />
+              <img src={image.imageUrl} alt={`Banner ${index}`} />
             </div>
           ))}
         </Slider>

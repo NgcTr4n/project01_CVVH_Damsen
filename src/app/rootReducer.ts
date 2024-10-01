@@ -17,6 +17,28 @@ import quangtruongslider3Reducer from "../features/quangtruongslider3Slice";
 import quangtruongslider4Reducer from "../features/quangtruongslider4Slice";
 import cachepsliderReducer from "../features/cachepSlice";
 import khamphaSlice from "../features/khamphaSlice";
+import cachepcontentReducer from "../features/cachepcontentSlide";
+import khiduoidaicontentReducer from "../features/khiduoidaicontentSlide";
+import thucvatcontentReducer from "../features/thucvatcontentSlide";
+import trangchuReducer from "../features/trangchuSlide";
+import chuyReducer from "../features/chuySlide";
+import lichsucontentReducer from "../features/lichsucontentSlide";
+import thongtincanhanReducer from "../features/thongtincanhanSlide";
+import baomatcontentReducer from "../features/baomatcontentSlide";
+import baomatsubcontentReducer from "../features/baomatsubcontentSlide";
+import thongtinbosungReducer from "../features/thongtinbosungSlide";
+import vedichvucontentReducer from "../features/vedichvucontentSlide";
+import congviencontentReducer from "../features/congviencontentSlide";
+import tapthecontentReducer from "../features/tapthecontentSlide";
+import dvchothueReducer from "../features/dvchothueSlide";
+import dvxedienReducer from "../features/dvxedienSlide";
+import vedichvusubcontentReducer from "../features/vedichvusubcontentSlide";
+import watershowcontentReducer from "../features/watershowcontentSlice";
+import giaveReducer from "../features/giaveSlide";
+import gioithieucontentReducer from "../features/gioithieucontentSlide";
+import gioithieulistReducer from "../features/gioithieulistSlide";
+import thanhviencontentReducer from "../features/thanhviencontentSlide";
+import vetaptheduccontentReducer from "../features/vetaptheduccontentSlide";
 
 const rootReducer = combineReducers({
   services: servicesReducer,
@@ -36,7 +58,33 @@ const rootReducer = combineReducers({
   quangtruongslider2: quangtruongslider2Reducer,
   quangtruongslider3: quangtruongslider3Reducer,
   quangtruongslider4: quangtruongslider4Reducer,
-  khampha: khamphaSlice
+  khampha: khamphaSlice,
+
+
+  //content
+  cachepcontent: cachepcontentReducer,
+  khiduoidaicontent: khiduoidaicontentReducer,
+  thucvatcontent: thucvatcontentReducer,
+  lichsucontent: lichsucontentReducer,
+  trangchu: trangchuReducer,
+  chuy: chuyReducer,
+  thongtincanhan: thongtincanhanReducer,
+  thongtinbosung: thongtinbosungReducer,
+
+  baomatcontent: baomatcontentReducer,
+  baomatsubcontent: baomatsubcontentReducer,
+  vedichvucontent: vedichvucontentReducer,
+  congviencontent: congviencontentReducer,
+  tapthecontent: tapthecontentReducer,
+  dvchothue: dvchothueReducer,
+  dvxedien: dvxedienReducer,
+  vedichvusubcontent: vedichvusubcontentReducer,
+  watershowcontent: watershowcontentReducer,
+  giave: giaveReducer,
+  gioithieucontent: gioithieucontentReducer,
+  gioithieulist: gioithieulistReducer,
+  thanhviencontent: thanhviencontentReducer,
+  vetaptheduccontent: vetaptheduccontentReducer,
 
 
 
